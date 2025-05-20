@@ -8,11 +8,11 @@
 - [x] **確認**: `npm run dev`で開発サーバー起動確認
 
 ## 2. Firebase設定
-- [ ] Firebaseプロジェクト作成
-- [ ] Authentication設定（メール/パスワード認証）
-- [ ] Firestoreデータベース作成
-- [ ] Firebase設定ファイル作成
-- [ ] **確認**: Firebaseコンソールで設定完了確認、アプリ内で接続テスト
+- [x] Firebaseプロジェクト作成
+- [x] Authentication設定（メール/パスワード認証）
+- [x] Firestoreデータベース作成
+- [x] Firebase設定ファイル作成
+- [x] **確認**: Firebaseコンソールで設定完了確認、アプリ内で接続テスト
 
 ## 3. 認証機能実装
 - [ ] Firebase初期化コンポーネント作成
