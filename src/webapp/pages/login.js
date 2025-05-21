@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import LoginForm from '../components/auth/LoginForm';
 import { useAuth } from '../lib/auth/AuthContext';
 
-export default function LoginPage() {
+function LoginPage() {
   const { user, loading } = useAuth();
   const router = useRouter();
 
@@ -61,3 +61,7 @@ export default function LoginPage() {
   // すでにログインしている場合（通常はこのコードは実行されない）
   return null;
 }
+
+LoginPage.authPage = true;
+
+export default LoginPage;
