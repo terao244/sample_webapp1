@@ -12,7 +12,7 @@ import {
   reauthenticateWithCredential,
   EmailAuthProvider
 } from 'firebase/auth';
-import { auth } from '../firebase/config';
+import { auth } from '../../firebase/config';
 
 // メールとパスワードでユーザー登録
 export const registerWithEmail = async (email, password, displayName) => {
