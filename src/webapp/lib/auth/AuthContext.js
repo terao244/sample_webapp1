@@ -1,7 +1,7 @@
 // 認証状態管理用のContext
 import { createContext, useContext, useEffect, useState } from 'react';
 import { onAuthStateChanged } from 'firebase/auth';
-import { auth } from '../../firebase/config';
+import { auth } from '../firebase/config';
 
 // 認証コンテキストの作成
 const AuthContext = createContext();
