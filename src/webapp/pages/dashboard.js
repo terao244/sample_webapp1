@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useAuth } from '../lib/auth/AuthContext';
 import LogoutButton from '../components/auth/LogoutButton';
 import ProtectedRoute from '../components/auth/ProtectedRoute';
+import { TaskList } from '../components/tasks';
 
 export default function Dashboard() {
   const { user } = useAuth();
@@ -19,23 +20,29 @@ export default function Dashboard() {
         <main>
           <h1>ダッシュボード</h1>
           
-          <div className="user-info">
-            <h2>ユーザー情報</h2>
-            {user && (
-              <>
-                <p><strong>名前:</strong> {user.displayName || 'なし'}</p>
-                <p><strong>メール:</strong> {user.email}</p>
-                <p><strong>ユーザーID:</strong> {user.uid}</p>
-                <p><strong>メール確認:</strong> {user.emailVerified ? '済み' : '未確認'}</p>
-              </>
-            )}
-          </div>
-          
-          <div className="actions">
-            <Link href="/profile" className="profile-button">
-              プロフィール設定
-            </Link>
-            <LogoutButton className="logout-button" />
+          <div className="dashboard-content">
+            <div className="user-info">
+              <h2>ユーザー情報</h2>
+              {user && (
+                <>
+                  <p><strong>名前:</strong> {user.displayName || 'なし'}</p>
+                  <p><strong>メール:</strong> {user.email}</p>
+                  <p><strong>ユーザーID:</strong> {user.uid}</p>
+                  <p><strong>メール確認:</strong> {user.emailVerified ? '済み' : '未確認'}</p>
+                </>
+              )}
+              
+              <div className="actions">
+                <Link href="/profile" className="profile-button">
+                  プロフィール設定
+                </Link>
+                <LogoutButton className="logout-button" />
+              </div>
+            </div>
+            
+            <div className="task-container">
+              <TaskList />
+            </div>
           </div>
         </main>
 
@@ -49,37 +56,60 @@ export default function Dashboard() {
           }
 
           main {
-            padding: 5rem 0;
+            padding: 3rem 0;
             flex: 1;
             display: flex;
             flex-direction: column;
             align-items: center;
             width: 100%;
-            max-width: 800px;
+            max-width: 1200px;
           }
 
           h1 {
             margin-bottom: 2rem;
+            color: #333;
+          }
+          
+          .dashboard-content {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+          }
+          
+          @media (min-width: 768px) {
+            .dashboard-content {
+              flex-direction: row;
+              gap: 2rem;
+            }
           }
 
           .user-info {
             width: 100%;
             padding: 1.5rem;
             background-color: #f5f5f5;
-            border-radius: 5px;
+            border-radius: 8px;
             margin-bottom: 2rem;
+            flex-shrink: 0;
+          }
+          
+          @media (min-width: 768px) {
+            .user-info {
+              width: 300px;
+              margin-bottom: 0;
+            }
           }
 
           .user-info h2 {
             margin-top: 0;
             margin-bottom: 1rem;
+            color: #333;
           }
 
           .actions {
-            width: 100%;
             display: flex;
             justify-content: center;
             gap: 1rem;
+            margin-top: 1.5rem;
           }
 
           .profile-button {
@@ -101,6 +131,11 @@ export default function Dashboard() {
             border-radius: 4px;
             cursor: pointer;
             font-size: 1rem;
+          }
+          
+          .task-container {
+            flex: 1;
+            width: 100%;
           }
         `}</style>
       </div>
